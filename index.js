@@ -4,7 +4,7 @@
 'use strict';
 
 const data_decoders = {
-  pcm8: (buffer, offset, output, channels, samples) => {
+  pcm8: function (buffer, offset, output, channels, samples) {
     let input = new Uint8Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -14,7 +14,7 @@ const data_decoders = {
       }
     }
   },
-  pcm16: (buffer, offset, output, channels, samples) => {
+  pcm16: function (buffer, offset, output, channels, samples) {
     let input = new Int16Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -24,7 +24,7 @@ const data_decoders = {
       }
     }
   },
-  pcm24: (buffer, offset, output, channels, samples) => {
+  pcm24: function (buffer, offset, output, channels, samples) {
     let input = new Uint8Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -38,7 +38,7 @@ const data_decoders = {
       }
     }
   },
-  pcm32: (buffer, offset, output, channels, samples) => {
+  pcm32: function (buffer, offset, output, channels, samples) {
     let input = new Int32Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -48,7 +48,7 @@ const data_decoders = {
       }
     }
   },
-  pcm32f: (buffer, offset, output, channels, samples) => {
+  pcm32f: function (buffer, offset, output, channels, samples) {
     let input = new Float32Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -56,7 +56,7 @@ const data_decoders = {
         output[ch][i] = input[pos++];
     }
   },
-  pcm64f: (buffer, offset, output, channels, samples) => {
+  pcm64f: function (buffer, offset, output, channels, samples) {
     let input = new Float64Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -67,7 +67,7 @@ const data_decoders = {
 };
 
 const data_encoders = {
-  pcm8: (buffer, offset, input, channels, samples) => {
+  pcm8: function (buffer, offset, input, channels, samples) {
     let output = new Uint8Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -78,7 +78,7 @@ const data_encoders = {
       }
     }
   },
-  pcm16: (buffer, offset, input, channels, samples) => {
+  pcm16: function (buffer, offset, input, channels, samples) {
     let output = new Int16Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -89,7 +89,7 @@ const data_encoders = {
       }
     }
   },
-  pcm24: (buffer, offset, input, channels, samples) => {
+  pcm24: function (buffer, offset, input, channels, samples) {
     let output = new Uint8Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -102,7 +102,7 @@ const data_encoders = {
       }
     }
   },
-  pcm32: (buffer, offset, input, channels, samples) => {
+  pcm32: function (buffer, offset, input, channels, samples) {
     let output = new Int32Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -113,7 +113,7 @@ const data_encoders = {
       }
     }
   },
-  pcm32f: (buffer, offset, input, channels, samples) => {
+  pcm32f: function (buffer, offset, input, channels, samples) {
     let output = new Float32Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
@@ -123,7 +123,7 @@ const data_encoders = {
       }
     }
   },
-  pcm64f: (buffer, offset, input, channels, samples) => {
+  pcm64f: function (buffer, offset, input, channels, samples) {
     let output = new Float64Array(buffer, offset);
     let pos = 0;
     for (let i = 0; i < samples; ++i) {
